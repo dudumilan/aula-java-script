@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scaled=1.0">
+        <title>imagens</title>
+        <style>
+            img{
+                width: 300px;
+                height: 300px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>experimento 05</h1>
+        <img src="../imagens/verde.png" id="imagem" onmouseenter="trocar(this, '../imagens/vermelho.png')" onmouseleave="trocar(this, '../imagens/verde.png')">
+
+        <script>
+            function trocar(imagemElement, novaImagem){
+                imagemElement.src = novaImagem 
+            }
+        </script>
+    </body>
+</html>
