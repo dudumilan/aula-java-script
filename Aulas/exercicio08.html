@@ -16,12 +16,13 @@
     <script>
         function adicionar(){
             console.log("Gerar Lista")
-            document.getElementById('coisas').innerHTML
+            document.getElementById('coisas').innerHTML 
             let tag_ul = document.getElementById("coisas")
             console.log(tag_ul)
+            var tarefa = document.getElementById ('tarefa')
 
             let tag_li = document.createElement('li')
-            tag_li.innerHTML = 'tarefa'
-            tag_ul.appendChild(tag_li)
+            tag_li.innerHTML = (`${tarefa.value}`)
+            tag_ul.appendChild(tag_li) 
            }
     </script>
