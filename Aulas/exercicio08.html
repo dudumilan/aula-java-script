@@ -4,25 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <style>
+        input[type="button"]{
+            background-color: blue;
+            color: white;
+         
+        }
+        
+    </style>
 
 </head>
 <body>
-    <h1>experimento 08</h1>
-    <input type="text" name="tarefas" id="tarefa" placeholder="Digite a primeira tarefa">
-    <input type="button" value="Adicionar" onclick="adicionar();">
-    <ul id="coisas">
+    <h1>experimento 08</h1> 
+    <input type="text" name="tarefas" id="tarefas" placeholder="Digite a primeira tarefa">
+    <input type="button" value="Adicionar" onclick="adicionar() ;">
+    <ul id="listaId">     
     </ul>
 
     <script>
         function adicionar(){
             console.log("Gerar Lista")
-            document.getElementById('coisas').innerHTML 
-            let tag_ul = document.getElementById("coisas")
-            console.log(tag_ul)
-            var tarefa = document.getElementById ('tarefa')
 
+            let inputTarefa = document.getElementById('tarefas')
+            let texto = inputTarefa.value.trim()
+
+            if (texto != ""){
+                let tag_ul = document.getElementById('listaId')
+                let tag_li = document.createElement('li')
+                tag_li.innerHTML = texto;
+                tag_ul.appendChild(tag_li);
+
+                inputTarefa.value = ""
+            } else{
+                alert("Digite algo para adicionar")
+            }
+            document.getElementById('listaId').innerHTML
             let tag_li = document.createElement('li')
-            tag_li.innerHTML = (`${tarefa.value}`)
-            tag_ul.appendChild(tag_li) 
-           }
+            tag_li.innerHTML = ('tarefa')
+            tag_li.appendChild(tag_li)
+        }
+
+         function editarLista(listaId) {
+            const lista = document.getElementById(listaId).value
+                if (!lista) {
+                console.error(`Lista com ID '${listaId}' não encontrada.`)
+                return
+            }
+            
+            const listaItens = lista.querySelectorAll('li')
+            for (const item of listaItens) {
+            const botaoEditar = document.createElement('button')
+            botaoEditar.textContent = 'Editar'
+            const botaoExcluir = document.createElement('button')
+            botaoExcluir.textContent = 'Excluir'
+
+            item.appendChild(botaoEditar)
+            item.appendChild(botaoExcluir)
+
+            botaoEditar.addEventListener('click', () => {
+                console.log(`Editar item: ${item.textContent}`)
+            })
+
+            botaoExcluir.addEventListener('click', () => {
+      
+      console.log(`Excluir item: ${item.textContent}`);
+      item.remove(); 
+    });
+  }
+}
+editarLista('listaId')
     </script>
