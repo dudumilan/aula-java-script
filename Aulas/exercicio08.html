@@ -6,7 +6,7 @@
     <title></title>
     <style>
         input[type="button"]{
-            background-color: blue;
+            background-color: green;
             color: white;
          
         }
@@ -15,62 +15,50 @@
 
 </head>
 <body>
-    <h1>experimento 08</h1> 
+    <h1>Exercicios 08</h1> 
     <input type="text" name="tarefas" id="tarefas" placeholder="Digite a primeira tarefa">
     <input type="button" value="Adicionar" onclick="adicionar() ;">
-    <ul id="listaId">     
+    
+    <ul id="coisas">     
     </ul>
 
     <script>
         function adicionar(){
-            console.log("Gerar Lista")
+            console.log("Gerar Lista");
 
-            let inputTarefa = document.getElementById('tarefas')
-            let texto = inputTarefa.value.trim()
+            let inputTarefa = document.getElementById('tarefas');
+            let texto = inputTarefa.value.trim();
 
             if (texto != ""){
-                let tag_ul = document.getElementById('listaId')
+                let tag_ul = document.getElementById('coisas')
                 let tag_li = document.createElement('li')
                 tag_li.innerHTML = texto;
                 tag_ul.appendChild(tag_li);
 
-                inputTarefa.value = ""
+                let botaoExcluir = document.createElement('button');
+                botaoExcluir.textcontent = "Excluir";
+                botaoExcluir.style.marginLeft = "5px";
+                botaoExcluir.onclick = function(){
+                    tag_ul.removeChild(tag_li);
+                };
+
+                tag_li.appendChild(botaoExcluir);
+                tag_ul.appendChild(tag_li);
+
+                let agora = new Date();
+                let dataHora = agora.toLocaleString();
+                tag_li.innerHtml += "<small>("+ dataHora + ")<small>";
+
+               
             } else{
-                alert("Digite algo para adicionar")
+                alert("Digite uma tarefa antes de adicionar");
+            
+            
             }
-            document.getElementById('listaId').innerHTML
+            document.getElementById('coisas').innerHTML
             let tag_li = document.createElement('li')
             tag_li.innerHTML = ('tarefa')
             tag_li.appendChild(tag_li)
         }
-
-         function editarLista(listaId) {
-            const lista = document.getElementById(listaId).value
-                if (!lista) {
-                console.error(`Lista com ID '${listaId}' não encontrada.`)
-                return
-            }
-            
-            const listaItens = lista.querySelectorAll('li')
-            for (const item of listaItens) {
-            const botaoEditar = document.createElement('button')
-            botaoEditar.textContent = 'Editar'
-            const botaoExcluir = document.createElement('button')
-            botaoExcluir.textContent = 'Excluir'
-
-            item.appendChild(botaoEditar)
-            item.appendChild(botaoExcluir)
-
-            botaoEditar.addEventListener('click', () => {
-                console.log(`Editar item: ${item.textContent}`)
-            })
-
-            botaoExcluir.addEventListener('click', () => {
-      
-      console.log(`Excluir item: ${item.textContent}`);
-      item.remove(); 
-    });
-  }
-}
-editarLista('listaId')
+        
     </script>
